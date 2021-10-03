@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginScreen } from "./screens";
+import { LoginScreen, MainScreen } from "./screens";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import {
     BrowserRouter as Router,
@@ -35,6 +35,15 @@ export function AnimationApp() {
                         children={
                             <div className="fill">
                                 <LoginScreen />
+                            </div>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/"
+                        children={
+                            <div className="fill">
+                                <MainScreen />
                             </div>
                         }
                     />

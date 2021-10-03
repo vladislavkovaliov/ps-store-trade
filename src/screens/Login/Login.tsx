@@ -1,5 +1,8 @@
+import { observer } from "mobx-react";
 import React, { useCallback, useRef } from "react";
-import { Icon } from "../../components";
+import { Button, Icon } from "../../components";
+import { useService } from "../../hooks";
+import { useHistory } from "react-router-dom";
 
 export interface InputProps {
     type?: "text" | "password";
@@ -16,42 +19,45 @@ export function Input({ type = "text", name }: InputProps) {
     );
 }
 
-export function LoginScreen() {
+export function LoginScreenComponent() {
+    const loginService = useService("LoginService");
+    const history = useHistory();
+
     const refForm = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = useCallback((e: React.SyntheticEvent) => {
-        e.preventDefault();
+    const handleSubmit = useCallback(
+        (e: React.SyntheticEvent) => {
+            e.preventDefault();
 
-        if (refForm && refForm.current) {
-            const formData = new FormData(refForm.current);
-            const loginValue = formData.get("login");
-            const passValue = formData.get("password");
+            if (refForm && refForm.current) {
+                const formData = new FormData(refForm.current);
+                const loginValue = formData.get("login");
+                const passValue = formData.get("password");
 
-            console.log({
-                login: loginValue,
-                passValue: passValue
-            })
-        }
-    }, []);
+                const isLogged = loginService.login(
+                    loginValue as string,
+                    passValue as string
+                );
+                if (isLogged) {
+                    history.push("/");
+                }
+            }
+        },
+        [loginService, history]
+    );
 
     return (
         <div className="h-screen w-screen bg-indigo-900 flex flex-wrap content-center justify-center">
             <div className="divide-y divide-grey space-y-3">
                 <div className="flex justify-between">
-                    <button
-                        className="flex justify-center items-center rounded-lg h-10 w-36 self-center bg-purple-600 hover:bg-purple-700 text-white shadow space-x-3"
-                        type="submit"
-                    >
-                        <Icon icon="google" />
-                        <span>Google</span>
-                    </button>
-                    <button
-                        className="flex justify-center items-center rounded-lg h-10 w-36 self-center bg-purple-600 hover:bg-purple-700 text-white shadow space-x-3"
-                        type="submit"
-                    >
-                        <Icon icon="facebook" />
-                        <span>Facebook</span>
-                    </button>
+                    <Button
+                        text="Goggle"
+                        iconComponent={<Icon icon="google" />}
+                    />
+                    <Button
+                        text="Facebook"
+                        iconComponent={<Icon icon="facebook" />}
+                    />
                 </div>
 
                 <form
@@ -71,15 +77,12 @@ export function LoginScreen() {
                         >
                             Forgot password?
                         </a>
-                        <button
-                            className="rounded-lg h-10 w-36 self-center bg-purple-600 hover:bg-purple-700 text-white shadow"
-                            type="submit"
-                        >
-                            Login
-                        </button>
+                        <Button text="Login" type="submit" />
                     </div>
                 </form>
             </div>
         </div>
     );
 }
+
+export const LoginScreen = observer(LoginScreenComponent);
