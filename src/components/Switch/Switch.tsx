@@ -50,10 +50,10 @@ export function SwitchModule({ onChange = noop, onInit }: SwitchProps) {
                     />
                     <label
                         className={cs(
-                            "cursor-pointer border border-transparent rounded-full p-2",
+                            "cursor-pointer border border-transparent rounded-full px-2 py-1",
                             {
-                                "text-gray-300": selectedValue !== value,
-                                "border-blue-500 text-blue-500":
+                                "text-gray-400": selectedValue !== value,
+                                "border-blue-400 text-blue-400":
                                     selectedValue === value,
                             }
                         )}
