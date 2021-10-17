@@ -1,7 +1,7 @@
 import { Switch } from "../../modules";
 import { GameCard } from "../../components";
 
-export function MainScreen() {
+export function SellScreen() {
     return (
         <div className="w-screen bg-indigo-900">
             <div className="container py-4 flex mx-auto space-x-2">
