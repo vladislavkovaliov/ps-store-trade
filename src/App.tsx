@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginScreen, MainScreen } from "./screens";
+import { LoginScreen, MainScreen, SellScreen } from "./screens";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import {
     BrowserRouter as Router,
@@ -10,6 +10,7 @@ import {
 
 import "./App.css";
 import { Assets } from "./components";
+import { MenuBar } from "./modules";
 
 function App() {
     return (
@@ -43,7 +44,22 @@ export function AnimationApp() {
                         path="/"
                         children={
                             <div className="fill">
-                                <MainScreen />
+                                <div className="flex">
+                                    <MenuBar />
+                                    <MainScreen />
+                                </div>
+                            </div>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/sell"
+                        children={
+                            <div className="fill">
+                                <div className="flex">
+                                    <MenuBar />
+                                    <SellScreen />
+                                </div>
                             </div>
                         }
                     />
