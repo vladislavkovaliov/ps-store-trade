@@ -1,2 +1,2 @@
-export { SwitchModule as Switch } from "./Switch/Switch";
-export { MenuBarModule as MenuBar } from "./MenuBar/MenuBar";
+export { Switch } from "./Switch/Switch";
+export { MenuBar } from "./MenuBar/MenuBar";

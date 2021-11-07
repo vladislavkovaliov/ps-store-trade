@@ -1,19 +1,20 @@
-import FakeImage from "../../images/uncharted-4.jpeg";
+import { GameImage } from "../GameImage/GameImage";
 
-export function GameCard() {
+export interface GameCardProps {
+    url: string;
+    title: string;
+    price: string;
+    imageSrc: string;
+}
+
+export function GameCard({ url, title, price, imageSrc }: GameCardProps) {
     return (
-        <div className="cursor-pointer space-y-3 mx-4 my-3">
-            <img
-                src={FakeImage}
-                alt="game-card-img"
-                className="w-52 h-72 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 rounded border-none"
-            />
+        <a href={url} className="cursor-pointer space-y-3 mx-4 my-3">
+            <GameImage src={imageSrc} />
             <div>
-                <div className="text-white text-base">Marvel Spider Man</div>
-                <div className="text-gray-400 text-white text-xs">
-                    45.99 BYN
-                </div>
+                <div className="text-white text-base">{title}</div>
+                <div className="text-gray-400 text-white text-xs">{price}</div>
             </div>
-        </div>
+        </a>
     );
 }

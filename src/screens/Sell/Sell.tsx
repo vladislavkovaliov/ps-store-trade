@@ -1,5 +1,6 @@
 import { Switch } from "../../modules";
 import { GameCard } from "../../components";
+import FakeImage from "../../images/uncharted-4.jpeg";
 
 export function SellScreen() {
     return (
@@ -14,7 +15,13 @@ export function SellScreen() {
                 {Array(21)
                     .fill(42)
                     .map((x, i) => (
-                        <GameCard key={i} />
+                        <GameCard
+                            key={i}
+                            url="games/bla"
+                            title="Marvel Spider Man"
+                            price="45.99 BYN"
+                            imageSrc={FakeImage}
+                        />
                     ))}
             </div>
         </div>

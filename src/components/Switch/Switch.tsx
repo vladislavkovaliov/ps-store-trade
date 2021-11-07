@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import { useCallback, useEffect, useState } from "react";
 import cs from "classnames";
 import { noop, map } from "lodash";
@@ -6,24 +5,10 @@ import { noop, map } from "lodash";
 export interface SwitchProps {
     onChange?: (value: string) => void;
     onInit: (value: string) => void;
+    values: Array<{ value: string; text: string }>;
 }
 
-export function SwitchModule({ onChange = noop, onInit }: SwitchProps) {
-    const values = [
-        {
-            value: "week",
-            text: "Last week",
-        },
-        {
-            value: "month",
-            text: "Last month",
-        },
-        {
-            value: "year",
-            text: "Last year",
-        },
-    ];
-
+export function Switch({ onChange = noop, onInit, values }: SwitchProps) {
     const [selectedValue, setSelectedValue] = useState<string>(values[0].value);
 
     const handleChange = useCallback(
@@ -66,5 +51,3 @@ export function SwitchModule({ onChange = noop, onInit }: SwitchProps) {
         </div>
     );
 }
-
-export const Switch = observer(SwitchModule);
