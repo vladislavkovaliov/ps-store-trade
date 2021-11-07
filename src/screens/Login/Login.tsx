@@ -1,23 +1,8 @@
 import { observer } from "mobx-react";
 import React, { useCallback, useRef } from "react";
-import { Button, Icon } from "../../components";
+import { Button, Icon, Input } from "../../components";
 import { useService } from "../../hooks";
 import { useHistory } from "react-router-dom";
-
-export interface InputProps {
-    type?: "text" | "password";
-    name: string;
-}
-
-export function Input({ type = "text", name }: InputProps) {
-    return (
-        <input
-            className="w-100 h-10 rounded-lg outline-none px-2 bg-white shadow-md text-grey-600"
-            type={type}
-            name={name}
-        />
-    );
-}
 
 export function LoginScreenComponent() {
     const loginService = useService("LoginService");
@@ -67,8 +52,8 @@ export function LoginScreenComponent() {
                     ref={refForm}
                 >
                     <div className="flex flex-col space-y-3 w-76">
-                        <Input name="login" />
-                        <Input name="password" type="password" />
+                        <Input id="login" name="login" />
+                        <Input id="password" name="password" type="password" />
                     </div>
                     <div className="flex justify-between">
                         <a

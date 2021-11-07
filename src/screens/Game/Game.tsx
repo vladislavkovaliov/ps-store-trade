@@ -1,9 +1,9 @@
-import { GameImage } from "../../components";
+import { Background, GameImage } from "../../components";
 import FakeImage from "../../images/uncharted-4.jpeg";
 
 export function GameScreen() {
     return (
-        <div className="w-screen bg-indigo-900">
+        <Background>
             <div className="container py-4 flex mx-auto space-x-2">
                 <div>
                     <GameImage src={FakeImage} />
@@ -31,6 +31,6 @@ export function GameScreen() {
                     2016 года было продано более 28 миллионов копий игр серии.
                 </div>
             </div>
-        </div>
+        </Background>
     );
 }

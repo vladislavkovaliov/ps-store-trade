@@ -5,3 +5,7 @@ export { Switch } from "./Switch/Switch";
 export { GameCard } from "./GameCard/GameCard";
 export { MenuBar } from "./MenuBar/MenuBar";
 export { GameImage } from "./GameImage/GameImage";
+export { Background } from "./Background/Background";
+export { Input } from "./Input/Input";
+export { Label } from "./Label/Label";
+export { ImageUpload } from "./ImageUpload/ImageUpload";

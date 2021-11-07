@@ -20,6 +20,14 @@ export function MenuBarModule() {
                 </Link>
             ),
         },
+        {
+            id: "create-game",
+            component: (
+                <Link className="block w-full" to="/create-game">
+                    Create Game
+                </Link>
+            ),
+        },
     ];
 
     return <MenuBarComponent items={items} />;
